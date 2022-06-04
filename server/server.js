@@ -1,8 +1,14 @@
 const express = require('express');
 const next = require('next');
+const mongoose = require('mongoose');
+
+require('dotenv').config();
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== 'production';
+
+mongoose.connect(process.env.MONGO_URL);
+
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
