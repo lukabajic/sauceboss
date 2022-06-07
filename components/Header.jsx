@@ -1,5 +1,4 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -17,7 +16,13 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import Divider from '@mui/material/Divider';
-import { ListItem, List, ListItemIcon, ListItemButton, ListItemText } from '@mui/material';
+import ListItem from '@mui/material/ListItem';
+import List from '@mui/material/List';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemText from '@mui/material/ListItemText';
+
+import { userPropTypes } from '../propTypes';
 
 const pages = [
   { text: 'Home', to: '/home', key: 'home', icon: Home },
@@ -27,22 +32,26 @@ const pages = [
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const propTypes = {
-  isLoggedIn: PropTypes.bool.isRequired,
+  user: userPropTypes,
 };
 
-function ResponsiveAppBar({ isLoggedIn }) {
-  const [anchorElNav, setAnchorElNav] = React.useState(false);
+const defaultProps = {
+  user: null,
+};
+
+function ResponsiveAppBar({ user }) {
+  const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-  const handleOpenNavMenu = () => {
-    setAnchorElNav(true);
+  const handleOpenNavMenu = (event) => {
+    setAnchorElNav(event.currentTarget);
   };
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
 
   const handleCloseNavMenu = () => {
-    setAnchorElNav(false);
+    setAnchorElNav(null);
   };
 
   const handleCloseUserMenu = () => {
@@ -100,7 +109,7 @@ function ResponsiveAppBar({ isLoggedIn }) {
 
           <SwipeableDrawer
             anchor="left"
-            open={anchorElNav}
+            open={Boolean(anchorElNav)}
             onClose={handleCloseNavMenu}
             onOpen={handleOpenNavMenu}
           >
@@ -156,7 +165,7 @@ function ResponsiveAppBar({ isLoggedIn }) {
             ))}
           </Box>
 
-          {isLoggedIn && (
+          {user && (
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -198,5 +207,6 @@ function ResponsiveAppBar({ isLoggedIn }) {
 }
 
 ResponsiveAppBar.propTypes = propTypes;
+ResponsiveAppBar.defaultProps = defaultProps;
 
 export default ResponsiveAppBar;

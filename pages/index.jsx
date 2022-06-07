@@ -1,11 +1,9 @@
 import Head from 'next/head';
-import PropTypes from 'prop-types';
+
+import { userPropTypes } from '../propTypes';
 
 const propTypes = {
-  user: PropTypes.shape({
-    displayName: PropTypes.string,
-    email: PropTypes.string.isRequired,
-  }),
+  user: userPropTypes,
 };
 
 const defaultProps = {
