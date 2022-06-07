@@ -1,4 +1,5 @@
 import { useState, createElement } from 'react';
+import Link from 'next/link';
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
@@ -57,10 +58,12 @@ function MobileMenu({ pages }) {
           <List>
             {pages.map((page) => (
               <ListItem key={page.key} disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>{createElement(page.icon)}</ListItemIcon>
-                  <ListItemText primary={page.text} />
-                </ListItemButton>
+                <Link href={page.to} passHref>
+                  <ListItemButton>
+                    <ListItemIcon>{createElement(page.icon)}</ListItemIcon>
+                    <ListItemText>{page.text}</ListItemText>
+                  </ListItemButton>
+                </Link>
               </ListItem>
             ))}
           </List>

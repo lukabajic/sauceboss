@@ -12,11 +12,11 @@ import Button from '@mui/material/Button';
 
 import AvatarMenu from './AvatarMenu';
 import MobileMenu from './MobileMenu';
+import Logo from '../Logo';
 import { userPropTypes } from '../../utils/propTypes';
-import { logoProps } from '../../utils/general';
 
 const pages = [
-  { text: 'Home', to: '/home', key: 'home', icon: Home },
+  { text: 'Home', to: '/', key: 'home', icon: Home },
   { text: 'Store', to: '/store', key: 'store', icon: Store },
   { text: 'News', to: '/news', key: 'news', icon: Feed },
 ];
@@ -34,51 +34,59 @@ function ResponsiveAppBar({ user }) {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Box
-            {...logoProps}
-            sx={{
-              display: { xs: 'none', md: 'flex' },
-              maxWidth: 64,
-              mr: 2,
-            }}
-          />
+          <Link href="/">
+            <Box
+              component="a"
+              sx={{
+                display: { xs: 'none', md: 'flex' },
+                mr: 2,
+                cursor: 'pointer',
+              }}
+            >
+              <Logo />
+            </Box>
+          </Link>
 
           <MobileMenu pages={pages} />
 
-          <Box
-            component="div"
-            sx={{
-              mr: 2,
-              flexGrow: 1,
-              display: { xs: 'flex', md: 'none' },
-              justifyContent: 'center',
-            }}
-          >
+          <Link href="/">
             <Box
-              {...logoProps}
+              component="a"
               sx={{
-                maxWidth: 64,
+                mr: 2,
+                flexGrow: 1,
+                display: { xs: 'flex', md: 'none' },
+                justifyContent: 'center',
+                cursor: 'pointer',
               }}
-            />
-          </Box>
+            >
+              <Logo />
+            </Box>
+          </Link>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'center' }}>
             {pages.map((page) => (
-              <Button key={page.key} sx={{ my: 2, color: 'white', display: 'block' }}>
-                {page.text}
-              </Button>
+              <Link key={page.key} href={page.to} passHref>
+                <Button color="inherit" sx={{ my: 2, color: 'white', display: 'block' }}>
+                  {page.text}
+                </Button>
+              </Link>
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
-            <IconButton color="inherit" onClick={() => {}} sx={{ p: 0 }}>
-              <ShoppingCartIcon />
-            </IconButton>
+          <Box sx={{ flexGrow: 0, display: 'flex' }}>
+            <Box>
+              <IconButton size="large" color="inherit" onClick={() => {}} sx={{ my: 2 }}>
+                <ShoppingCartIcon />
+              </IconButton>
+            </Box>
 
             {!user && (
-              <Link href="/login" passHref>
-                <Button color="inherit">Login</Button>
-              </Link>
+              <Box sx={{ display: { xs: 'none', md: 'flex' }, my: 2 }}>
+                <Link href="/login" passHref>
+                  <Button color="inherit">Login</Button>
+                </Link>
+              </Box>
             )}
 
             {user && <AvatarMenu user={user} />}
