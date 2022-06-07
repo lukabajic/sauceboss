@@ -39,7 +39,7 @@ app.prepare().then(() => {
 
   server.get('/', async (req, res) => {
     // const user = { email: 'team@builderbook.org' };
-    const user = await User.findOne({ slug: 'team-builder-book' });
+    const user = await User.findOne({ _id: '629f73d39f02776cfcf44804' });
     app.render(req, res, '/', { user });
   });
 

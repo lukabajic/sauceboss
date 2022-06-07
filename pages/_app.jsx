@@ -12,7 +12,7 @@ import Header from '../components/Header';
 const propTypes = {
   Component: PropTypes.elementType.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
-  pageProps: PropTypes.objectOf(PropTypes.object).isRequired,
+  pageProps: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 class MyApp extends App {
@@ -25,7 +25,7 @@ class MyApp extends App {
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         </Head>
         <CssBaseline />
-        <Header {...pageProps} isLoggedIn={false} />
+        <Header {...pageProps} />
         <Component {...pageProps} />
       </ThemeProvider>
     );
