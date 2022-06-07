@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState, createElement } from 'react';
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
@@ -17,7 +17,7 @@ const propTypes = {
 };
 
 function MobileMenu({ pages }) {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElNav, setAnchorElNav] = useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -58,7 +58,7 @@ function MobileMenu({ pages }) {
             {pages.map((page) => (
               <ListItem key={page.key} disablePadding>
                 <ListItemButton>
-                  <ListItemIcon>{React.createElement(page.icon)}</ListItemIcon>
+                  <ListItemIcon>{createElement(page.icon)}</ListItemIcon>
                   <ListItemText primary={page.text} />
                 </ListItemButton>
               </ListItem>

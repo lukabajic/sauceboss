@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState } from 'react';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 import Avatar from '@mui/material/Avatar';
@@ -17,7 +17,7 @@ const propTypes = {
 const defaultProps = {};
 
 function AvatarMenu({ user }) {
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [anchorElUser, setAnchorElUser] = useState(null);
 
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
