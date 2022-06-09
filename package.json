@@ -18,6 +18,9 @@
     "express-session": "^1.17.3",
     "mongoose": "^6.3.4",
     "next": "^12.1.7-canary.29",
+    "nprogress": "^0.2.0",
+    "passport": "^0.6.0",
+    "passport-google-oauth": "^2.0.0",
     "prop-types": "^15.8.1",
     "react": "18.1.0",
     "react-dom": "18.1.0"
