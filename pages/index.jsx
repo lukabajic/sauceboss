@@ -1,6 +1,7 @@
 import Head from 'next/head';
 
-import { userPropTypes } from '../utils/propTypes';
+import { userPropTypes } from '../lib/propTypes';
+import withAuth from '../lib/withAuth';
 
 const propTypes = {
   user: userPropTypes,
@@ -23,9 +24,7 @@ function Index({ user }) {
   );
 }
 
-Index.getInitialProps = async (ctx) => ({ user: ctx.query.user });
-
 Index.propTypes = propTypes;
 Index.defaultProps = defaultProps;
 
-export default Index;
+export default withAuth(Index);

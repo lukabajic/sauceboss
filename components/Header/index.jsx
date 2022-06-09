@@ -12,6 +12,7 @@ import Button from '@mui/material/Button';
 import PersonIcon from '@mui/icons-material/Person';
 import LogoutIcon from '@mui/icons-material/Logout';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import GoogleIcon from '@mui/icons-material/Google';
 
 import AvatarMenu from './AvatarMenu';
 import MobileMenu from './MobileMenu';
@@ -93,7 +94,9 @@ function ResponsiveAppBar({ user }) {
             {!user && (
               <Box sx={{ display: { xs: 'none', md: 'flex' }, my: 2 }}>
                 <Link href="/login" passHref>
-                  <Button color="inherit">Login</Button>
+                  <Button variant="outlined" color="inherit" startIcon={<GoogleIcon />}>
+                    Login
+                  </Button>
                 </Link>
               </Box>
             )}

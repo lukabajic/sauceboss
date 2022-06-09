@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import LoginIcon from '@mui/icons-material/Login';
 import ChevronLeft from '@mui/icons-material/ChevronLeft';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import Divider from '@mui/material/Divider';
@@ -15,6 +14,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import Toolbar from '@mui/material/Toolbar';
+import GoogleIcon from '@mui/icons-material/Google';
 
 import { userPropTypes } from '../../lib/propTypes';
 
@@ -88,7 +88,7 @@ function MobileMenu({ pages, options, user }) {
                 <Link href="/login" passHref>
                   <ListItemButton selected={router.asPath === '/login'}>
                     <ListItemIcon>
-                      <LoginIcon />
+                      <GoogleIcon />
                     </ListItemIcon>
                     <ListItemText>Login</ListItemText>
                   </ListItemButton>

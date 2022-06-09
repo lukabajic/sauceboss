@@ -38,9 +38,9 @@ app.prepare().then(() => {
   server.use(session(sess));
 
   server.get('/', async (req, res) => {
-    // const user = { email: 'team@builderbook.org' };
     const user = await User.findOne({ _id: '629f73d39f02776cfcf44804' });
-    app.render(req, res, '/', { user });
+    req.user = user;
+    app.render(req, res, '/');
   });
 
   server.get('*', (req, res) => handle(req, res));
