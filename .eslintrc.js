@@ -15,6 +15,7 @@ module.exports = {
       },
     ],
     'no-console': 'off',
+    'consistent-return': 'off',
     'no-restricted-syntax': [
       'error',
       {
