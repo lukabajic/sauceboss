@@ -9,15 +9,11 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
 
-const options = [
-  { text: 'Profile', to: '/profile', key: 'profile' },
-  { text: 'Got questions?', to: '/questions', key: 'questions' },
-  { text: 'Logout', to: '/logout', key: 'logout' },
-];
-
 const propTypes = {
   displayName: PropTypes.string,
   avatarUrl: PropTypes.string,
+  // eslint-disable-next-line react/forbid-prop-types
+  options: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 const defaultProps = {
@@ -25,7 +21,7 @@ const defaultProps = {
   avatarUrl: null,
 };
 
-function AvatarMenu({ displayName, avatarUrl }) {
+function AvatarMenu({ displayName, avatarUrl, options }) {
   const [anchorElUser, setAnchorElUser] = useState(null);
 
   const handleOpenUserMenu = (event) => {

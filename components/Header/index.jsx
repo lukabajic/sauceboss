@@ -9,6 +9,9 @@ import Feed from '@mui/icons-material/Feed';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
+import PersonIcon from '@mui/icons-material/Person';
+import LogoutIcon from '@mui/icons-material/Logout';
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 
 import AvatarMenu from './AvatarMenu';
 import MobileMenu from './MobileMenu';
@@ -21,6 +24,12 @@ const pages = [
   { text: 'News', to: '/news', key: 'news', icon: Feed },
 ];
 
+const options = [
+  { text: 'Profile', to: '/profile', key: 'profile', icon: PersonIcon },
+  { text: 'Got questions?', to: '/questions', key: 'questions', icon: HelpOutlineIcon },
+  { text: 'Logout', to: '/logout', key: 'logout', icon: LogoutIcon },
+];
+
 const propTypes = {
   user: userPropTypes,
 };
@@ -31,7 +40,7 @@ const defaultProps = {
 
 function ResponsiveAppBar({ user }) {
   return (
-    <AppBar position="static">
+    <AppBar position="fixed">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Link href="/">
@@ -47,7 +56,7 @@ function ResponsiveAppBar({ user }) {
             </Box>
           </Link>
 
-          <MobileMenu pages={pages} />
+          <MobileMenu pages={pages} options={options} user={user} />
 
           <Link href="/">
             <Box
@@ -89,7 +98,13 @@ function ResponsiveAppBar({ user }) {
               </Box>
             )}
 
-            {user && <AvatarMenu user={user} />}
+            {user && (
+              <AvatarMenu
+                displayName={user.displayName}
+                avatarUrl={user.avatarUrl}
+                options={options}
+              />
+            )}
           </Box>
         </Toolbar>
       </Container>
