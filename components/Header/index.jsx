@@ -16,7 +16,7 @@ import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import AvatarMenu from './AvatarMenu';
 import MobileMenu from './MobileMenu';
 import Logo from '../Logo';
-import { userPropTypes } from '../../utils/propTypes';
+import { userPropTypes } from '../../lib/propTypes';
 
 const pages = [
   { text: 'Home', to: '/', key: 'home', icon: Home },

@@ -16,7 +16,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import Toolbar from '@mui/material/Toolbar';
 
-import { userPropTypes } from '../../utils/propTypes';
+import { userPropTypes } from '../../lib/propTypes';
 
 const propTypes = {
   user: userPropTypes,
