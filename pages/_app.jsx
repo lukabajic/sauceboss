@@ -22,6 +22,15 @@ class MyApp extends App {
     return (
       <ThemeProvider theme={theme}>
         <Head>
+          {/* TODO */}
+          {/* <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
+          <meta httpEquiv="X-UA-Compatible" content="IE=7" />
+          <meta httpEquiv="Content-Type" content="text/html;charset=UTF-8" />
+          <meta httpEquiv="refresh" content="0; url=http://example.com" />
+          <meta httpEquiv="Content-Type" content="text/html;charset=UTF-8" />
+          <meta name="keywords" content="" /> */}
+          {/* END TODO */}
+
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         </Head>
         <CssBaseline />
@@ -31,7 +40,6 @@ class MyApp extends App {
     );
   }
 }
-
 MyApp.propTypes = propTypes;
 
 export default MyApp;

@@ -63,7 +63,6 @@ function ResponsiveAppBar({ user }) {
             <Box
               component="a"
               sx={{
-                mr: 2,
                 flexGrow: 1,
                 display: { xs: 'flex', md: 'none' },
                 justifyContent: 'center',

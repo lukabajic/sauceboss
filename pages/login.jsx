@@ -1,28 +1,69 @@
 import Head from 'next/head';
 import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import GoogleIcon from '@mui/icons-material/Google';
 
 import withAuth from '../lib/withAuth';
 
 function Login() {
+  const handleLoginClicked = () => {};
+
   return (
-    <div style={{ textAlign: 'center', margin: '0 20px' }}>
-      <Head>
-        <title>Log in to Builder Book</title>
-        <meta name="description" content="Login page for builderbook.org" />
-      </Head>
-      <br />
-      <p style={{ margin: '45px auto', fontSize: '44px', fontWeight: '400' }}>Log in</p>
-      <p>You’ll be logged in for 14 days unless you log out manually.</p>
-      <br />
-      <Button variant="contained" href="/auth/google">
-        <img
-          src="https://storage.googleapis.com/builderbook/G.svg"
-          alt="Log in with Google"
-          style={{ marginRight: '10px' }}
-        />
-        Log in with Google
-      </Button>
-    </div>
+    <Box sx={{ width: '100vw' }}>
+      <Container
+        maxWidth="lg"
+        sx={{
+          minHeight: '100vh',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          flexDirection: 'column',
+          pt: 10,
+          px: { xs: 2, md: 3 },
+          pb: { xs: 2, md: 3 },
+        }}
+      >
+        <Head>
+          <title>Log in to Sauceboss</title>
+          <meta
+            name="description"
+            content="Login page for Sauceboss. There are advantages to becoming a member. Get instant notifications on discounts and new products. Save your card data for easier purchasing."
+          />
+        </Head>
+        <Typography
+          align="center"
+          variant="h3"
+          component="h3"
+          sx={{
+            color: '#ffffff',
+            mb: 2,
+          }}
+        >
+          Login
+        </Typography>
+        <Typography
+          align="center"
+          variant="body1"
+          sx={{
+            color: '#ffffff',
+            mb: 2,
+          }}
+        >
+          There are advantages to becoming a member. Get instant notifications on discounts and new
+          products. Save your card data for easier purchasing.
+        </Typography>
+        <Button
+          variant="outlined"
+          color="tertiary"
+          startIcon={<GoogleIcon />}
+          onClick={handleLoginClicked}
+        >
+          Log in with Google
+        </Button>
+      </Container>
+    </Box>
   );
 }
 
