@@ -39,6 +39,11 @@ export default class MyDocument extends Document {
             rel="stylesheet"
           />
           <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+          <link
+            rel="stylesheet"
+            href="https://storage.cloud.google.com/sauceboss/nprogress.css?authuser=0"
+          />
         </Head>
         <body>
           <Main />

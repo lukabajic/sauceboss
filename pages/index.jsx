@@ -1,7 +1,6 @@
 import Head from 'next/head';
 
 import { userPropTypes } from '../lib/propTypes';
-import withAuth from '../lib/withAuth';
 
 const propTypes = {
   user: userPropTypes,
@@ -27,4 +26,4 @@ function Index({ user }) {
 Index.propTypes = propTypes;
 Index.defaultProps = defaultProps;
 
-export default withAuth(Index);
+export default Index;

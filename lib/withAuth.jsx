@@ -1,12 +1,14 @@
 import { Component } from 'react';
+import { withRouter } from 'next/router';
 import PropTypes from 'prop-types';
-import Router from 'next/router';
 
 import { userPropTypes } from './propTypes';
 
 const propTypes = {
   user: userPropTypes,
   isFromServer: PropTypes.bool.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  router: PropTypes.object.isRequired,
 };
 
 const defaultProps = {
@@ -34,14 +36,14 @@ export default function withAuth(
     }
 
     componentDidMount() {
-      const { user, isFromServer } = this.props;
+      const { user, isFromServer, router } = this.props;
 
       if (isFromServer) globalUser = user;
 
       const redirectToLogin = loginRequired && !logoutRequired && !user;
-      if (redirectToLogin) return Router.push('/public/login', '/login');
+      if (redirectToLogin) return router.push('/public/login', '/login');
 
-      if (logoutRequired && user) return Router.push('/');
+      if (logoutRequired && user) return router.push('/');
     }
 
     render() {
@@ -59,5 +61,5 @@ export default function withAuth(
   App.propTypes = propTypes;
   App.defaultProps = defaultProps;
 
-  return App;
+  return withRouter(App);
 }

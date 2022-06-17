@@ -48,7 +48,8 @@ function Login() {
           variant="body1"
           sx={{
             color: '#ffffff',
-            mb: 2,
+            maxWidth: 480,
+            mb: 3,
           }}
         >
           There are advantages to becoming a member. Get instant notifications on discounts and new
