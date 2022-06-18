@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Link from 'next/link';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -8,8 +9,6 @@ import GoogleIcon from '@mui/icons-material/Google';
 import withAuth from '../lib/withAuth';
 
 function Login() {
-  const handleLoginClicked = () => {};
-
   return (
     <Box sx={{ width: '100vw' }}>
       <Container
@@ -55,14 +54,11 @@ function Login() {
           There are advantages to becoming a member. Get instant notifications on discounts and new
           products. Save your card data for easier purchasing.
         </Typography>
-        <Button
-          variant="outlined"
-          color="tertiary"
-          startIcon={<GoogleIcon />}
-          onClick={handleLoginClicked}
-        >
-          Log in with Google
-        </Button>
+        <Link href="/auth/google" passHref>
+          <Button variant="outlined" color="tertiary" startIcon={<GoogleIcon />}>
+            Log in with Google
+          </Button>
+        </Link>
       </Container>
     </Box>
   );

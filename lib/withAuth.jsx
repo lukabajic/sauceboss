@@ -19,7 +19,7 @@ let globalUser = null;
 
 export default function withAuth(
   BaseComponent,
-  { loginRequired = true, logoutRequired = false } = {},
+  { loginRequired = false, logoutRequired = false } = {},
 ) {
   class App extends Component {
     static async getInitialProps(ctx) {
