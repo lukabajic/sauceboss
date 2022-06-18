@@ -45,7 +45,7 @@ function MobileMenu({ pages, options, user }) {
   return (
     <>
       <Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'none' } }}>
-        <IconButton size="large" onClick={handleOpenNavMenu} color="inherit">
+        <IconButton size="large" onClick={handleOpenNavMenu} color="tertiary">
           <MenuIcon />
         </IconButton>
       </Box>
