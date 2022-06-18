@@ -18,6 +18,7 @@ import AvatarMenu from './AvatarMenu';
 import MobileMenu from './MobileMenu';
 import Logo from '../Logo';
 import { userPropTypes } from '../../lib/propTypes';
+import { useScrollDetect } from '../../lib/hooks';
 
 const pages = [
   { text: 'Home', to: '/', key: 'home', icon: Home },
@@ -40,8 +41,13 @@ const defaultProps = {
 };
 
 function ResponsiveAppBar({ user }) {
+  const [isScrolled] = useScrollDetect();
+
+  const color = isScrolled ? 'primary' : 'transparent';
+  const elevation = isScrolled ? 4 : 0;
+
   return (
-    <AppBar position="fixed">
+    <AppBar position="fixed" color={color} elevation={elevation} sx={{ transition: 'all 0.4s' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Link href="/">
@@ -85,7 +91,7 @@ function ResponsiveAppBar({ user }) {
 
           <Box sx={{ flexGrow: 0, display: 'flex' }}>
             <Box>
-              <IconButton size="large" color="inherit" onClick={() => {}} sx={{ my: 2 }}>
+              <IconButton size="large" color="tertiary" onClick={() => {}} sx={{ my: 2 }}>
                 <ShoppingCartIcon />
               </IconButton>
             </Box>
@@ -93,7 +99,7 @@ function ResponsiveAppBar({ user }) {
             {!user && (
               <Box sx={{ display: { xs: 'none', md: 'flex' }, my: 2 }}>
                 <Link href="/login" passHref>
-                  <Button variant="outlined" color="inherit" startIcon={<GoogleIcon />}>
+                  <Button variant="outlined" color="tertiary" startIcon={<GoogleIcon />}>
                     Login
                   </Button>
                 </Link>
