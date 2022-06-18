@@ -67,8 +67,10 @@ const setupGoogle = ({ rootUrl, server }) => {
   );
 
   server.get('/logout', (req, res) => {
-    req.logout();
-    res.redirect('/login');
+    req.logout((err) => {
+      if (err) res.redirect('/500');
+      res.redirect('/login');
+    });
   });
 };
 
