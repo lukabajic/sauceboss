@@ -36,7 +36,12 @@ function AvatarMenu({ displayName, avatarUrl, options }) {
     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
       <Tooltip title="Open settings">
         <IconButton onClick={handleOpenUserMenu} sx={{ p: 0, ml: 0.8 }}>
-          <Avatar sx={{ width: 30, height: 30 }} alt={displayName} src={avatarUrl} />
+          <Avatar
+            sx={{ width: 30, height: 30 }}
+            alt={displayName}
+            src={avatarUrl}
+            imgProps={{ referrerPolicy: 'no-referrer' }}
+          />
         </IconButton>
       </Tooltip>
       <Menu
