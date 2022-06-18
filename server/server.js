@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 
-const User = require('./models/User');
+const setupGoogle = require('./google');
 
 require('dotenv').config();
 
@@ -32,20 +32,16 @@ const sess = {
   },
 };
 
+const rootUrl = `http://localhost:${port}`;
+
 app.prepare().then(() => {
   const server = express();
 
   server.use(session(sess));
-
-  server.get('/', async (req, res) => {
-    const user = await User.findOne({ _id: '629f73d39f02776cfcf44804' });
-    req.user = user;
-    app.render(req, res, '/');
-  });
-
+  setupGoogle({ server, rootUrl });
   server.get('*', (req, res) => handle(req, res));
 
   server.listen(port, () => {
-    console.log(`> Ready on http://localhost:${port}`);
+    console.log(`> Ready on ${rootUrl}`);
   });
 });
