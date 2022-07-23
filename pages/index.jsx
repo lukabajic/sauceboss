@@ -6,26 +6,28 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import ChevronRight from '@mui/icons-material/ChevronRight';
 
 import withAuth from '../lib/withAuth';
-import { userPropTypes } from '../lib/propTypes';
+// import { userPropTypes } from '../lib/propTypes';
 
-const propTypes = {
-  user: userPropTypes,
-};
+// const propTypes = {
+//   user: userPropTypes,
+// };
 
-const defaultProps = {
-  user: null,
-};
+// const defaultProps = {
+//   user: null,
+// };
 
-function Index({ user }) {
-  const isDesktop = useMediaQuery('(min-width: 992px)');
-
+function Index() {
+  const isDesktop = useMediaQuery('(min-width: 900px)');
   const bannerImage = isDesktop ? '/banner-desktop.jpg' : '/banner-mobile.jpg';
 
   return (
     <main className="IndexPage">
       <Head>
         <title>Sauceboss</title>
-        <meta name="description" content="This is the description of the Index page" />
+        <meta
+          name="description"
+          content="Homemade sweet chilli. Exceptional flavours with rare exotic peppers from around the world. Read more. Buy now."
+        />
       </Head>
       <Box sx={{ minHeight: '100vh', width: '100%', position: 'relative' }}>
         <Box
@@ -95,7 +97,7 @@ function Index({ user }) {
                   Learn more
                 </Button>
                 <Button variant="text" color="tertiary" endIcon={<ChevronRight />}>
-                  Buy now
+                  Shop now
                 </Button>
               </Box>
             </Box>
@@ -113,7 +115,7 @@ function Index({ user }) {
                 }}
               >
                 <Typography variant="h4" component="h4" color="white" fontWeight="500">
-                  10K
+                  982
                 </Typography>
                 <Typography
                   variant="h6"
@@ -157,12 +159,11 @@ function Index({ user }) {
           </Box>
         </Box>
       </Box>
-      {user && <div style={{ color: 'wheat' }}>{user.email}</div>}
     </main>
   );
 }
 
-Index.propTypes = propTypes;
-Index.defaultProps = defaultProps;
+// Index.propTypes = propTypes;
+// Index.defaultProps = defaultProps;
 
 export default withAuth(Index);
