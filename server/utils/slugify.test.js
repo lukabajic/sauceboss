@@ -12,24 +12,20 @@ const MockUser = {
 };
 
 describe('slugify', () => {
-  test('no duplication', () => {
+  test('no duplication', async () => {
     expect.assertions(1);
-    generateSlug(MockUser, 'John Jonhson.').then((slug) => {
-      expect(slug).toBe('john-jonhson');
-    });
+    const slug = await generateSlug(MockUser, 'John Jonhson.');
+    expect(slug).toBe('john-jonhson');
   });
 
-  test('one duplication', () => {
+  test('one duplication', async () => {
     expect.assertions(1);
-    generateSlug(MockUser, 'John.').then((slug) => {
-      expect(slug).toBe('john-1');
-    });
+    const slug = await generateSlug(MockUser, 'John.');
+    expect(slug).toBe('john-1');
   });
 
-  test('multiple duplications', () => {
-    expect.assertions(1);
-    generateSlug(MockUser, 'John Jonhson Jr.').then((slug) => {
-      expect(slug).toBe('john-jonhson-jr-2');
-    });
+  test('multiple duplications', async () => {
+    const slug = await generateSlug(MockUser, 'John Jonhson Jr.');
+    expect(slug).toBe('john-jonhson-jr-2');
   });
 });
