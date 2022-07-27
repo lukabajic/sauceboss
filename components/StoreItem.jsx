@@ -35,7 +35,7 @@ function StoreItem({ id, title, desc, img, price }) {
           borderRadius={4}
         />
 
-        <Box sx={{ marginBottom: 3 }}>
+        <Box sx={{ marginBottom: 2 }}>
           <Typography color="white" component="h6" variant="h6">
             {title}
           </Typography>
@@ -43,16 +43,16 @@ function StoreItem({ id, title, desc, img, price }) {
           {desc && (
             <Typography
               component="p"
-              variant="p"
+              variant="body2"
               color="lightgray"
               sx={{
-                height: 48,
+                height: 40,
                 overflow: 'hidden',
-                'text-overflow': 'ellipsis',
+                textOverflow: 'ellipsis',
                 display: '-webkit-box',
-                '-webkit-line-clamp': '2',
-                'line-clamp': '2',
-                '-webkit-box-orient': 'vertical',
+                WebkitLineClamp: '2',
+                lineClamp: '2',
+                WebkitBoxOrient: 'vertical',
               }}
             >
               {desc}
@@ -72,7 +72,7 @@ function StoreItem({ id, title, desc, img, price }) {
           </Typography>
 
           <Button variant="outlined" color="tertiary" sx={{ flex: 1 }}>
-            Buy
+            Kupi
           </Button>
         </Box>
       </Box>

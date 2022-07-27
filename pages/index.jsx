@@ -16,6 +16,10 @@ import withAuth from '../lib/withAuth';
 //   user: null,
 // };
 
+// TODO: fetch server side number of products and number of customers
+// TODO: fetch server page content
+// TODO: change text to serbian
+
 function Index() {
   const isDesktop = useMediaQuery('(min-width: 900px)');
   const bannerImage = isDesktop ? '/banner-desktop.jpg' : '/banner-mobile.jpg';
@@ -83,7 +87,7 @@ function Index() {
               </Typography>
 
               <Typography
-                variant="p"
+                variant="body1"
                 component="p"
                 color="lightgray"
                 fontWeight="400"
