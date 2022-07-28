@@ -20,7 +20,7 @@ import withAuth from '../lib/withAuth';
 
 function Index() {
   return (
-    <main className="IndexPage">
+    <>
       <Head>
         <title>Sauceboss</title>
         <meta
@@ -158,7 +158,7 @@ function Index() {
           </Box>
         </Box>
       </Box>
-    </main>
+    </>
   );
 }
 

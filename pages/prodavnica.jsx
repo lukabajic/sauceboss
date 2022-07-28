@@ -143,7 +143,7 @@ function Store() {
   };
 
   return (
-    <main className="IndexPage">
+    <>
       <Head>
         <title>Prodavnica - Sauceboss</title>
         <meta
@@ -267,7 +267,7 @@ function Store() {
           </Grid>
         </Grid>
       </Box>
-    </main>
+    </>
   );
 }
 
