@@ -24,7 +24,7 @@ function StoreItem({ id, title, desc, img, price }) {
   return (
     <Grid item xs={12} sm={4} onClick={() => handleClick(id)}>
       <Box
-        sx={{ backgroundColor: 'rgba(255, 255, 255, 0.1)', p: 2 }}
+        sx={{ backgroundColor: 'rgba(255, 255, 255, 0.05)', p: 2 }}
         borderRadius={4}
         boxShadow={4}
       >

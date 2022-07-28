@@ -145,10 +145,10 @@ function Store() {
   return (
     <main className="IndexPage">
       <Head>
-        <title>Sauceboss</title>
+        <title>Prodavnica - Sauceboss</title>
         <meta
           name="description"
-          content="Sauceboss store. Different categories. Different tastes. Buy now."
+          content="Sauceboss prodavnica. Domaći slatki čili. Različite kategorije. Različiti ukusi. Kupite odmah."
         />
       </Head>
 
@@ -260,36 +260,6 @@ function Store() {
           </Grid>
           <Grid item xs={12} sm={12} md={9}>
             <Grid container spacing={2}>
-              {/* <Grid item xs={12} sx={{ mb: 2, position: 'relative' }}>
-                <Box
-                  component="img"
-                  src="/multiple-sauces.jpeg"
-                  sx={{
-                    position: 'relative',
-                    display: 'block',
-                    maxWidth: '100%',
-                    objectFit: 'cover',
-                    opacity: 0.6,
-                    zIndex: 0,
-                  }}
-                  borderRadius={4}
-                  boxShadow={4}
-                />
-                <Box sx={{ position: 'absolute', bottom: 24, right: 24, zIndex: 1 }}>
-                  <Typography color="white" variant="h4" component="h4">
-                    Text on image
-                  </Typography>
-                  <Typography
-                    color="lightgray"
-                    variant="body1"
-                    component="h5"
-                    sx={{ maxWidth: 256 }}
-                  >
-                    Smaller text on image to best describe your products
-                  </Typography>
-                </Box>
-              </Grid> */}
-
               {products.map((i) => (
                 <StoreItem key={i.id} {...i} />
               ))}

@@ -21,15 +21,15 @@ import { userPropTypes } from '../../lib/propTypes';
 import { useScrollDetect } from '../../lib/hooks';
 
 const pages = [
-  { text: 'Home', to: '/', key: 'home', icon: Home },
-  { text: 'Store', to: '/store', key: 'store', icon: Store },
-  { text: 'News', to: '/news', key: 'news', icon: Feed },
+  { text: 'Početna', to: '/', key: 'home', icon: Home },
+  { text: 'Prodavnica', to: '/prodavnica', key: 'store', icon: Store },
+  { text: 'Blog', to: '/blog', key: 'blog', icon: Feed },
 ];
 
 const options = [
-  { text: 'Profile', to: '/profile', key: 'profile', icon: PersonIcon },
-  { text: 'Got questions?', to: '/questions', key: 'questions', icon: HelpOutlineIcon },
-  { text: 'Logout', to: '/logout', key: 'logout', icon: LogoutIcon },
+  { text: 'Profil', to: '/profil', key: 'profile', icon: PersonIcon },
+  { text: 'Pitanja?', to: '/pitanja', key: 'questions', icon: HelpOutlineIcon },
+  { text: 'Izloguj se', to: '/odjava', key: 'logout', icon: LogoutIcon },
 ];
 
 const propTypes = {
@@ -98,9 +98,9 @@ function ResponsiveAppBar({ user }) {
 
             {!user && (
               <Box sx={{ display: { xs: 'none', md: 'flex' }, my: 2 }}>
-                <Link href="/login" passHref>
+                <Link href="/prijava" passHref>
                   <Button variant="outlined" color="tertiary" startIcon={<GoogleIcon />}>
-                    Login
+                    Prijavi se
                   </Button>
                 </Link>
               </Box>

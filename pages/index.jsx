@@ -2,8 +2,6 @@ import Head from 'next/head';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import ChevronRight from '@mui/icons-material/ChevronRight';
 
 import withAuth from '../lib/withAuth';
 // import { userPropTypes } from '../lib/propTypes';
@@ -21,22 +19,19 @@ import withAuth from '../lib/withAuth';
 // TODO: change text to serbian
 
 function Index() {
-  const isDesktop = useMediaQuery('(min-width: 900px)');
-  const bannerImage = isDesktop ? '/banner-desktop.jpg' : '/banner-mobile.jpg';
-
   return (
     <main className="IndexPage">
       <Head>
         <title>Sauceboss</title>
         <meta
           name="description"
-          content="Homemade sweet chilli. Exceptional flavours with rare exotic peppers from around the world. Read more. Buy now."
+          content="Domaći slatki čili. Izvanredni ukusi retkih egzotičnih paprika sa svih strana sveta. Saznajte više. Kupite odmah."
         />
       </Head>
       <Box sx={{ minHeight: '100vh', width: '100%', position: 'relative' }}>
         <Box
           component="img"
-          src={bannerImage}
+          src="/banner.jpg"
           sx={{
             position: 'absolute',
             top: 0,
@@ -83,7 +78,7 @@ function Index() {
               }}
             >
               <Typography variant="h5" component="h5" color="white" fontWeight="500" sx={{ mb: 1 }}>
-                Homemade sweet chilli
+                Domaći slatki čili
               </Typography>
 
               <Typography
@@ -93,15 +88,15 @@ function Index() {
                 fontWeight="400"
                 sx={{ maxWidth: 280, mb: 2, textAlign: { xs: 'center', sm: 'left' } }}
               >
-                Exceptional flavours with rare exotic peppers from around the world
+                Izvanredni ukusi retkih egzotičnih paprika sa svih strana sveta
               </Typography>
 
               <Box sx={{ display: 'flex' }}>
-                <Button variant="text" color="tertiary" endIcon={<ChevronRight />} sx={{ mr: 3 }}>
-                  Learn more
+                <Button variant="outlined" color="tertiary" sx={{ mr: 3 }}>
+                  Saznajte više
                 </Button>
-                <Button variant="text" color="tertiary" endIcon={<ChevronRight />}>
-                  Shop now
+                <Button variant="outlined" color="tertiary">
+                  Kupite
                 </Button>
               </Box>
             </Box>
@@ -128,7 +123,7 @@ function Index() {
                   fontWeight="400"
                   textTransform="uppercase"
                 >
-                  Customers
+                  Mušterija
                 </Typography>
               </Box>
 
@@ -156,7 +151,7 @@ function Index() {
                   fontWeight="400"
                   textTransform="uppercase"
                 >
-                  Products
+                  Proizvoda
                 </Typography>
               </Box>
             </Box>
