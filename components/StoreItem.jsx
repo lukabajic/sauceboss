@@ -66,7 +66,8 @@ function StoreItem({ id, title, desc, img, price }) {
             component="h5"
             color="white"
             fontWeight="500"
-            sx={{ marginRight: 2 }}
+            marginRight={2}
+            minWidth={100}
           >
             {price}RSD
           </Typography>

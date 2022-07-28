@@ -55,12 +55,13 @@ const STORE_ITEMS = [
 // TODO: fetch server side initial products
 // TODO: change text to serbian
 
-let filterWidth = 0;
+let resizeTimeout = null;
 
 function Store() {
   const [isScrolled] = useScrollDetect();
   const filterForm = useRef(null);
   const [products, setProducts] = useState([]);
+  const [filterWidth, setFilterWidth] = useState([]);
   const [initialProducts, setInitialProducts] = useState([]);
   const [filters, setFilters] = useState({
     minPrice: 0,
@@ -69,10 +70,19 @@ function Store() {
     searchTerm: '',
   });
 
+  const handleFilterFormWidth = () => {
+    if (resizeTimeout) clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      setFilterWidth(filterForm.current.clientWidth);
+    }, 300);
+  };
+
   useEffect(() => {
+    handleFilterFormWidth();
     setProducts(STORE_ITEMS);
     setInitialProducts(STORE_ITEMS);
-    filterWidth = filterForm.current.clientWidth;
+    window.addEventListener('resize', handleFilterFormWidth);
+    return () => window.removeEventListener('resize', handleFilterFormWidth);
   }, []);
 
   const handleApplyFilters = () => {
@@ -218,7 +228,7 @@ function Store() {
 
                 <TextField
                   id="max"
-                  label="Max"
+                  label="Maks"
                   type="number"
                   variant="outlined"
                   value={filters.maxPrice}
@@ -250,15 +260,35 @@ function Store() {
           </Grid>
           <Grid item xs={12} sm={12} md={9}>
             <Grid container spacing={2}>
-              <Grid item xs={12} sx={{ mb: 2 }}>
+              {/* <Grid item xs={12} sx={{ mb: 2, position: 'relative' }}>
                 <Box
                   component="img"
                   src="/multiple-sauces.jpeg"
-                  sx={{ display: 'block', maxWidth: '100%' }}
+                  sx={{
+                    position: 'relative',
+                    display: 'block',
+                    maxWidth: '100%',
+                    objectFit: 'cover',
+                    opacity: 0.6,
+                    zIndex: 0,
+                  }}
                   borderRadius={4}
                   boxShadow={4}
                 />
-              </Grid>
+                <Box sx={{ position: 'absolute', bottom: 24, right: 24, zIndex: 1 }}>
+                  <Typography color="white" variant="h4" component="h4">
+                    Text on image
+                  </Typography>
+                  <Typography
+                    color="lightgray"
+                    variant="body1"
+                    component="h5"
+                    sx={{ maxWidth: 256 }}
+                  >
+                    Smaller text on image to best describe your products
+                  </Typography>
+                </Box>
+              </Grid> */}
 
               {products.map((i) => (
                 <StoreItem key={i.id} {...i} />
