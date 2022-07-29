@@ -16,7 +16,6 @@ import withAuth from '../lib/withAuth';
 
 // TODO: fetch server side number of products and number of customers
 // TODO: fetch server page content
-// TODO: change text to serbian
 
 function Index() {
   return (
@@ -77,14 +76,20 @@ function Index() {
                 pt: { xs: 3, md: 0 },
               }}
             >
-              <Typography variant="h5" component="h5" color="white" fontWeight="500" sx={{ mb: 1 }}>
+              <Typography
+                variant="h5"
+                component="h5"
+                color="tertiary.main"
+                fontWeight="500"
+                sx={{ mb: 1 }}
+              >
                 Domaći slatki čili
               </Typography>
 
               <Typography
                 variant="body1"
                 component="p"
-                color="lightgray"
+                color="tertiary.side"
                 fontWeight="400"
                 sx={{ maxWidth: 280, mb: 2, textAlign: { xs: 'center', sm: 'left' } }}
               >
@@ -113,13 +118,13 @@ function Index() {
                   flexDirection: 'column',
                 }}
               >
-                <Typography variant="h4" component="h4" color="white" fontWeight="500">
+                <Typography variant="h4" component="h4" color="tertiary.main" fontWeight="500">
                   982
                 </Typography>
                 <Typography
                   variant="h6"
                   component="h6"
-                  color="lightgray"
+                  color="tertiary.side"
                   fontWeight="400"
                   textTransform="uppercase"
                 >
@@ -136,7 +141,7 @@ function Index() {
                 <Typography
                   variant="h4"
                   component="h4"
-                  color="white"
+                  color="tertiary.main"
                   fontWeight="500"
                   sx={{
                     textAlign: { xs: 'right', sm: 'left' },
@@ -147,7 +152,7 @@ function Index() {
                 <Typography
                   variant="h6"
                   component="h6"
-                  color="lightgray"
+                  color="tertiary.side"
                   fontWeight="400"
                   textTransform="uppercase"
                 >

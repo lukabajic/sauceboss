@@ -23,11 +23,7 @@ function StoreItem({ id, title, desc, img, price }) {
 
   return (
     <Grid item xs={12} sm={4} onClick={() => handleClick(id)}>
-      <Box
-        sx={{ backgroundColor: 'rgba(255, 255, 255, 0.05)', p: 2 }}
-        borderRadius={4}
-        boxShadow={4}
-      >
+      <Box sx={{ backgroundColor: '#F9F9F9', p: 2 }} borderRadius={4} boxShadow={4}>
         <Box
           component="img"
           src={img}
@@ -36,7 +32,7 @@ function StoreItem({ id, title, desc, img, price }) {
         />
 
         <Box sx={{ marginBottom: 2 }}>
-          <Typography color="white" component="h6" variant="h6">
+          <Typography component="h6" variant="h6">
             {title}
           </Typography>
 
@@ -44,7 +40,6 @@ function StoreItem({ id, title, desc, img, price }) {
             <Typography
               component="p"
               variant="body2"
-              color="lightgray"
               sx={{
                 height: 40,
                 overflow: 'hidden',
@@ -61,18 +56,11 @@ function StoreItem({ id, title, desc, img, price }) {
         </Box>
 
         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-          <Typography
-            variant="h5"
-            component="h5"
-            color="white"
-            fontWeight="500"
-            marginRight={2}
-            minWidth={100}
-          >
+          <Typography variant="h5" component="h5" fontWeight="500" marginRight={2} minWidth={100}>
             {price}RSD
           </Typography>
 
-          <Button variant="outlined" color="tertiary" sx={{ flex: 1 }}>
+          <Button variant="outlined" color="primary" sx={{ flex: 1 }}>
             Kupi
           </Button>
         </Box>

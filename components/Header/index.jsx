@@ -82,9 +82,7 @@ function ResponsiveAppBar({ user }) {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'center' }}>
             {pages.map((page) => (
               <Link key={page.key} href={page.to} passHref>
-                <Button color="inherit" sx={{ my: 2, color: 'white', display: 'block' }}>
-                  {page.text}
-                </Button>
+                <Button sx={{ my: 2, color: '#F9F9F9', display: 'block' }}>{page.text}</Button>
               </Link>
             ))}
           </Box>

@@ -52,21 +52,16 @@ function Login() {
             align="center"
             variant="h3"
             component="h3"
-            sx={{
-              color: '#ffffff',
-              mb: 2,
-            }}
+            color="tertiary.main"
+            sx={{ mb: 2 }}
           >
             Prijava
           </Typography>
           <Typography
             align="center"
             variant="body1"
-            color="lightgray"
-            sx={{
-              maxWidth: 480,
-              mb: 3,
-            }}
+            color="tertiary.side"
+            sx={{ maxWidth: 480, mb: 3 }}
           >
             Prijava je vrlo jednostavna, samo dva klika. Koristite već postojeći Google nalog.
             Ukoliko postanete član naše zajednice dobijate specijalne popuste personalizovane samo

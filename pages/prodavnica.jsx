@@ -51,9 +51,7 @@ const STORE_ITEMS = [
   },
 ];
 
-// TODO: fetch server side image content
 // TODO: fetch server side initial products
-// TODO: change text to serbian
 
 let resizeTimeout = null;
 
@@ -182,7 +180,7 @@ function Store() {
               component="form"
               noValidate
               autoComplete="off"
-              sx={{ backgroundColor: 'rgba(255, 255, 255, 0.9)', p: 2 }}
+              sx={{ backgroundColor: '#F9F9F9', p: 2 }}
               borderRadius={4}
               boxShadow={4}
             >
