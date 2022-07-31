@@ -11,6 +11,11 @@ import Checkbox from '@mui/material/Checkbox';
 import Button from '@mui/material/Button';
 import InputAdornment from '@mui/material/InputAdornment';
 import SearchIcon from '@mui/icons-material/Search';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import YouTubeIcon from '@mui/icons-material/YouTube';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import IconButton from '@mui/material/IconButton';
 import withAuth from '../lib/withAuth';
 import StoreItem from '../components/StoreItem';
 import { specialCharsRemove } from '../lib/utils';
@@ -180,7 +185,7 @@ function Store() {
               component="form"
               noValidate
               autoComplete="off"
-              sx={{ backgroundColor: '#F9F9F9', p: 2 }}
+              sx={{ backgroundColor: '#F9F9F9', p: 2, mb: 1 }}
               borderRadius={4}
               boxShadow={4}
             >
@@ -255,7 +260,29 @@ function Store() {
                 Primeni filtere
               </Button>
             </Box>
+
+            <Stack direction="row" justifyContent="space-around">
+              <IconButton
+                component="a"
+                href="https://www.instagram.com"
+                target="_blank"
+                size="large"
+                color="tertiary"
+              >
+                <InstagramIcon />
+              </IconButton>
+              <IconButton size="large" color="tertiary">
+                <FacebookIcon />
+              </IconButton>
+              <IconButton size="large" color="tertiary">
+                <TwitterIcon />
+              </IconButton>
+              <IconButton size="large" color="tertiary">
+                <YouTubeIcon />
+              </IconButton>
+            </Stack>
           </Grid>
+
           <Grid item xs={12} sm={12} md={9}>
             <Grid container spacing={2}>
               {products.map((i) => (
