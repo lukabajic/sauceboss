@@ -12,7 +12,7 @@ function Login() {
   return (
     <>
       <Head>
-        <title>Prijava - Sauceboss</title>
+        <title>Prijava &mdash; Sauceboss</title>
         <meta
           name="description"
           content="Stranica za prijavljivanje na Sauceboss. Ukoliko postanete član naše zajednice dobijate specijalne popuste personalizovane samo za vas. Prijavite se."

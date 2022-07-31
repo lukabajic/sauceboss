@@ -143,7 +143,7 @@ function Store() {
   return (
     <>
       <Head>
-        <title>Prodavnica - Sauceboss</title>
+        <title>Prodavnica &mdash; Sauceboss</title>
         <meta
           name="description"
           content="Sauceboss prodavnica. Domaći slatki čili. Različite kategorije. Različiti ukusi. Kupite odmah."

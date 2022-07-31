@@ -89,7 +89,7 @@ function ResponsiveAppBar({ user }) {
 
           <Box sx={{ flexGrow: 0, display: 'flex' }}>
             <Box>
-              <IconButton size="large" color="tertiary" onClick={() => {}} sx={{ my: 2 }}>
+              <IconButton size="large" color="tertiary" onClick={() => {}} sx={{ my: 2, mr: 1 }}>
                 <ShoppingCartIcon />
               </IconButton>
             </Box>

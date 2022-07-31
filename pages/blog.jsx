@@ -208,7 +208,7 @@ function News() {
   return (
     <>
       <Head>
-        <title>Blog - Sauceboss</title>
+        <title>Blog &mdash; Sauceboss</title>
         <meta
           name="description"
           content="Sauceboss blog. Saznajte više o našim jedinstvenim proizvodima. Čitajte novosti iz sveta soseva. Porčitajte više."
