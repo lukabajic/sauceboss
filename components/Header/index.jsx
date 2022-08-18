@@ -29,7 +29,7 @@ const pages = [
 const options = [
   { text: 'Profil', to: '/profil', key: 'profile', icon: PersonIcon },
   { text: 'Pitanja?', to: '/pitanja', key: 'questions', icon: HelpOutlineIcon },
-  { text: 'Izloguj se', to: '/odjava', key: 'logout', icon: LogoutIcon },
+  { text: 'Izloguj se', to: '/logout', key: 'logout', icon: LogoutIcon },
 ];
 
 const propTypes = {
@@ -82,7 +82,9 @@ function ResponsiveAppBar({ user }) {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'center' }}>
             {pages.map((page) => (
               <Link key={page.key} href={page.to} passHref>
-                <Button sx={{ my: 2, color: '#F9F9F9', display: 'block' }}>{page.text}</Button>
+                <Button color="tertiary" sx={{ my: 2, display: 'block', minWidth: 0 }}>
+                  {page.text}
+                </Button>
               </Link>
             ))}
           </Box>
@@ -96,7 +98,7 @@ function ResponsiveAppBar({ user }) {
 
             {!user && (
               <Box sx={{ display: { xs: 'none', md: 'flex' }, my: 2 }}>
-                <Link href="/prijava" passHref>
+                <Link href="/login" passHref>
                   <Button variant="outlined" color="tertiary" startIcon={<GoogleIcon />}>
                     Prijavi se
                   </Button>
