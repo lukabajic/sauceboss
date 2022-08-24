@@ -3,24 +3,23 @@ const next = require('next');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
-
 const setupGoogle = require('./google');
-
+const { sessionName, sessionSecret, mongoUrl, port, nodeEnv } = require('./variables');
 require('dotenv').config();
 
-const port = parseInt(process.env.PORT, 10) || 3000;
-const dev = process.env.NODE_ENV !== 'production';
+const portInUse = parseInt(port, 10) || 3000;
+const dev = nodeEnv !== 'production';
 
-mongoose.connect(process.env.MONGO_URL);
+mongoose.connect(mongoUrl);
 
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
 const sess = {
-  name: process.env.SESSION_NAME,
-  secret: process.env.SESSION_SECRET,
+  name: sessionName,
+  secret: sessionSecret,
   store: new MongoStore({
-    mongoUrl: process.env.MONGO_URL,
+    mongoUrl,
     ttl: 14 * 24 * 60 * 60,
   }),
   resave: false,
@@ -32,7 +31,7 @@ const sess = {
   },
 };
 
-const rootUrl = `http://localhost:${port}`;
+const rootUrl = `http://localhost:${portInUse}`;
 
 app.prepare().then(() => {
   const server = express();
@@ -41,7 +40,7 @@ app.prepare().then(() => {
   setupGoogle({ server, rootUrl });
   server.get('*', (req, res) => handle(req, res));
 
-  server.listen(port, () => {
+  server.listen(portInUse, () => {
     console.log(`> Ready on ${rootUrl}`);
   });
 });
