@@ -3,6 +3,7 @@ const GoogleStrategy = require('passport-google-oauth2').Strategy;
 
 const User = require('./models/User');
 const { isArrayWithItems } = require('./utils/helpers');
+const { saveError, logErorr } = require('./utils/errors');
 
 const verify = async (accessToken, refreshToken, { id, emails, displayName, photos }, done) => {
   let email;
@@ -22,7 +23,8 @@ const verify = async (accessToken, refreshToken, { id, emails, displayName, phot
 
     done(null, user);
   } catch (error) {
-    console.error(error);
+    error.where = 'verify';
+    await logErorr(error);
     done(error);
   }
 };
@@ -44,10 +46,15 @@ const setupGoogle = ({ rootUrl, server }) => {
     done(null, user.id);
   });
 
-  passport.deserializeUser((id, done) => {
-    User.findById(id, User.publicFields(), (err, user) => {
-      done(err, user);
-    });
+  passport.deserializeUser(async (id, done) => {
+    try {
+      const user = await User.findById(id, User.publicFields());
+      done(null, user);
+    } catch (error) {
+      error.where = 'passport.deserializeUser';
+      await logErorr(error);
+      done(error);
+    }
   });
 
   server.use(passport.initialize());
@@ -67,9 +74,12 @@ const setupGoogle = ({ rootUrl, server }) => {
   );
 
   server.get('/logout', (req, res) => {
-    req.logout((err) => {
-      if (err) res.redirect('/500');
-      res.redirect('/login');
+    req.logout(async (err) => {
+      if (err) {
+        await saveError(err, 'server.get("/logout")', 500);
+        return res.redirect('/500');
+      }
+      res.redirect('/');
     });
   });
 };
