@@ -8,11 +8,16 @@ const createError = (msg, where, status) => {
 };
 
 const logErorr = async (err) => {
-  const status = err.status || 500;
-  const error = err.message || err.toString();
-  const obj = { status, error, where: err.where };
-  await new ErrorLog(obj).save();
-  return obj;
+  try {
+    const status = err.status || 500;
+    const error = err.message || err.toString();
+    const obj = { status, error, where: err.where };
+    await new ErrorLog(obj).save();
+    return obj;
+  } catch (error) {
+    console.error('Error in: logErorr()');
+    console.error(error);
+  }
 };
 
 const throwError = (...args) => {

@@ -4,11 +4,11 @@ const { Schema } = mongoose;
 
 const mongoSchema = new Schema(
   {
-    message: {
+    error: {
       type: String,
       required: false,
     },
-    statusCode: {
+    status: {
       type: Number,
       required: false,
     },
