@@ -67,8 +67,8 @@ router.get('/:model', async (req, res) => {
   try {
     checkModel(model, ERROR_WHERE.paginate(model));
     const { rowsPerPage = '10', pageNumber = '1' } = req.query;
-    const limit = Number(rowsPerPage);
-    const skip = Number(rowsPerPage) * Number(pageNumber);
+    const limit = Number(rowsPerPage) || 10;
+    const skip = Number(rowsPerPage) * Number(pageNumber) || 0;
     const docs = await models[model].find().limit(limit).skip(skip);
     if (!docs) return throwError(ERROR_MSG.notFound, ERROR_WHERE.paginate(model), 404);
     res.status(200).json({ docs });
