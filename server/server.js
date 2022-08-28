@@ -5,6 +5,7 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const setupGoogle = require('./google');
 const { sessionName, sessionSecret, mongoUrl, port, nodeEnv } = require('./variables');
+const dynamicRouter = require('./routes');
 require('dotenv').config();
 
 const portInUse = parseInt(port, 10) || 3000;
@@ -38,6 +39,7 @@ app.prepare().then(() => {
 
   server.use(session(sess));
   setupGoogle({ server, rootUrl });
+  server.use('/api/dynamic', dynamicRouter);
   server.get('*', (req, res) => handle(req, res));
 
   server.listen(portInUse, () => {
