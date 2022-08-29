@@ -6,10 +6,10 @@ const router = Router();
 
 const ERROR_WHERE = {
   create: (model) => `POST /api/dynamic/${model}`,
-  edit: (model) => `PUT /api/dynamic/${model}/:id`,
+  edit: (model) => `PUT /api/dynamic/${model}/:_id`,
   paginate: (model) => `GET /api/dynamic/${model}`,
-  get: (model) => `GET /api/dynamic/${model}/:id`,
-  delete: (model) => `DELETE /api/dynamic/${model}/:id`,
+  get: (model) => `GET /api/dynamic/${model}/:_id`,
+  delete: (model) => `DELETE /api/dynamic/${model}/:_id`,
 };
 
 const ERROR_MSG = {
@@ -17,7 +17,7 @@ const ERROR_MSG = {
   edit: 'EDIT_FAILED',
   notFound: 'NOT_FOUND',
   delete: 'DELETE_FAILED',
-  modelNotFound: "The model provided doesn't exist.",
+  modelNotFound: 'MODEL_NOT_FOUND',
 };
 
 const checkModel = (model, where) =>
@@ -40,8 +40,10 @@ router.put('/:model/:_id', async (req, res) => {
   const { _id, model } = req.params;
   try {
     checkModel(model, ERROR_WHERE.edit(model));
-    const doc = await models[model].updateOne({ _id }, req.body);
-    if (!doc) return throwError(ERROR_MSG.edit, ERROR_WHERE.edit(model), 400);
+    const doc = await models[model].findById(_id);
+    if (!doc) return throwError(ERROR_MSG.notFound, ERROR_WHERE.get(model), 404);
+    Object.assign(doc, req.body);
+    await doc.save();
     res.status(200).json({ doc });
   } catch (error) {
     error.where = ERROR_WHERE.edit(model);
@@ -66,7 +68,7 @@ router.get('/:model', async (req, res) => {
   const { model } = req.params;
   try {
     checkModel(model, ERROR_WHERE.paginate(model));
-    const { rowsPerPage = '10', pageNumber = '1' } = req.query;
+    const { rowsPerPage = '10', pageNumber = '0' } = req.query;
     const limit = Number(rowsPerPage) || 10;
     const skip = Number(rowsPerPage) * Number(pageNumber) || 0;
     const docs = await models[model].find().limit(limit).skip(skip);
@@ -82,9 +84,9 @@ router.delete('/:model/:_id', async (req, res) => {
   const { _id, model } = req.params;
   try {
     checkModel(model, ERROR_WHERE.delete(model));
-    const { ok } = await models[model].deleteOne({ _id });
-    if (!ok) return throwError(ERROR_MSG.delete, ERROR_WHERE.delete(model), 400);
-    res.status(200).json({});
+    const { deletedCount } = await models[model].deleteOne({ _id });
+    if (!deletedCount) return throwError(ERROR_MSG.delete, ERROR_WHERE.delete(model), 400);
+    res.sendStatus(200);
   } catch (error) {
     error.where = ERROR_WHERE.delete(model);
     catchError(res, error);

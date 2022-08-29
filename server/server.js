@@ -3,6 +3,7 @@ const next = require('next');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
+const bodyParser = require('body-parser');
 const setupGoogle = require('./google');
 const { sessionName, sessionSecret, mongoUrl, port, nodeEnv } = require('./variables');
 const dynamicRouter = require('./routes');
@@ -38,6 +39,7 @@ app.prepare().then(() => {
   const server = express();
 
   server.use(session(sess));
+  server.use(bodyParser.json());
   setupGoogle({ server, rootUrl });
   server.use('/api/dynamic', dynamicRouter);
   server.get('*', (req, res) => handle(req, res));

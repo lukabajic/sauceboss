@@ -1,4 +1,5 @@
 const ErrorLog = require('../models/ErrorLog');
+const { serverError, validationError } = require('./mongo');
 
 const createError = (msg, where, status) => {
   const error = new Error(msg);
@@ -26,8 +27,19 @@ const throwError = (...args) => {
 
 const saveError = async (...args) => logErorr(createError(...args));
 
+const checkForMongoErr = (err) => {
+  switch (err.name) {
+    case 'MongoServerError':
+      return serverError(err);
+    case 'ValidationError':
+      return validationError(err);
+    default:
+      return err;
+  }
+};
+
 const catchError = async (res, err) => {
-  const error = await logErorr(err);
+  const error = await logErorr(checkForMongoErr(err));
   return res.status(error.status).json(error);
 };
 
